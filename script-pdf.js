@@ -1,11 +1,11 @@
 function guardarPDF() {
     const { jsPDF } = window.jspdf; // Importa jsPDF desde el objeto global window.jspdf
     const container = document.getElementById('container'); // Obtiene el elemento HTML con id 'container'
-    const operario = document.getElementById('operario').value.trim(); // Obtiene el valor del input con id 'operario' y elimina espacios en blanco al inicio y final
+    const auditor = document.getElementById('auditor').value.trim(); // Obtiene el valor del input con id 'auditor' y elimina espacios en blanco al inicio y final
 
-    // Verifica que el campo operario no esté vacío
-    if (!operario) {
-        alert("Por favor, ingresa el nombre del operario.");
+    // Verifica que el campo auditor no esté vacío
+    if (!auditor) {
+        alert("Por favor, ingresa el nombre del auditor.");
         return; // Si está vacío, muestra una alerta y sale de la función sin hacer nada más
     }
 
@@ -22,8 +22,8 @@ function guardarPDF() {
     const seconds = date.getSeconds().toString().padStart(2, '0'); // Segundos (con dos dígitos)
     const fileSafeTime = `${hours}-${minutes}`; // Hora formateada como hh-mm
 
-    // Genera el nombre del archivo PDF con el formato 'Reporte_operario_dd-mm-yyyy_hh-mm.pdf'
-    const fileName = `Reporte_${operario}_${formattedDate}_${fileSafeTime}.pdf`;
+    // Genera el nombre del archivo PDF con el formato 'Reporte_auditor_dd-mm-yyyy_hh-mm.pdf'
+    const fileName = `Reporte_${auditor}_${formattedDate}.pdf`;
 
     // Opciones para la generación de la imagen del contenedor HTML a capturar
     const options = {
