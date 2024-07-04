@@ -23,7 +23,7 @@ function guardarPDF() {
     const fileSafeTime = `${hours}-${minutes}`; // Hora formateada como hh-mm
 
     // Genera el nombre del archivo PDF con el formato 'Reporte_operario_dd-mm-yyyy_hh-mm.pdf'
-    const fileName = `Reporte_${operario}_${formattedDate}_${fileSafeTime}.pdf`;
+    const fileName = `Reporte_${operario}_${formattedDate}.pdf`;
 
     // Opciones para la generación de la imagen del contenedor HTML a capturar
     const options = {
