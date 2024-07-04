@@ -40,7 +40,7 @@ function guardarPDF() {
         const pdf = new jsPDF('p', 'mm', 'a4'); // Crea un nuevo documento PDF en formato 'portrait', tamaño 'a4'
         const imgProps = pdf.getImageProperties(imgData); // Obtiene las propiedades de la imagen capturada
         const margin = 10; // Márgenes para el PDF
-        const pdfWidth = pdf.internal.pageSize.getWidth() - 2 * margin; // Ancho disponible del PDF
+        const pdfWidth = pdf.internal.pageSize.getWidth() - 4 * margin; // Ancho disponible del PDF
         const pageHeight = pdf.internal.pageSize.getHeight() - 0.5 * margin; // Altura disponible de la página del PDF
 
         // Calcula la altura de la imagen ajustada al ancho del PDF
