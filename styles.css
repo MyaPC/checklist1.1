@@ -52,6 +52,8 @@ textarea {
     border: 1px solid #dcbb0060;
     margin: 0 auto;
     padding: 5px;
+    font-size: 11px;
+    text-transform: capitalize;
     box-sizing: border-box;
 }
 
@@ -124,8 +126,18 @@ textarea {
     width: calc(100% - 0px);
     border: 1px solid #dcbb0060;
     padding: 5px;
+    font-size: 11px;
+    text-transform: uppercase;
     box-sizing: border-box;
     margin-bottom: 5px;
+}
+
+.indicador {
+    width: 100%;
+    color: #105469;
+    padding: 5px;
+    font-size: 8px;
+    text-align: center;
 }
 
 /* CONTENEDOR BOTÓN */
@@ -150,12 +162,4 @@ button:hover {
 
 button:active {
     background-color: #3e8e41; /* Define el color de fondo cuando el botón está activo */
-}
-
-.indicador {
-    width: 100%;
-    color: #105469;
-    padding: 5px;
-    font-size: 8px;
-    text-align: center;
 }

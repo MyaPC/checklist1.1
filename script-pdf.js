@@ -1,13 +1,32 @@
+function capitalize(text) {
+    return text.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
+}
+
 function guardarPDF() {
     const { jsPDF } = window.jspdf; // Importa jsPDF desde el objeto global window.jspdf
     const container = document.getElementById('container'); // Obtiene el elemento HTML con id 'container'
-    const auditor = document.getElementById('auditor').value.trim(); // Obtiene el valor del input con id 'auditor' y elimina espacios en blanco al inicio y final
+    
+    // Obtiene los campos de texto
+    const operarioField = document.getElementById('operario');
+    const auditorField = document.getElementById('auditor');
+    const clienteField = document.getElementById('cliente');
+    const direccionField = document.getElementById('direccion');
+    const observacionesField = document.getElementById('observaciones'); // Obtiene el campo de texto de observaciones
+
+    // Capitaliza los valores de los campos de texto
+    operarioField.value = capitalize(operarioField.value.trim());
+    auditorField.value = capitalize(auditorField.value.trim());
+    clienteField.value = capitalize(clienteField.value.trim());
+    direccionField.value = capitalize(direccionField.value.trim());
 
     // Verifica que el campo auditor no esté vacío
-    if (!auditor) {
+    if (!auditorField.value) {
         alert("Por favor, ingresa el nombre del auditor.");
         return; // Si está vacío, muestra una alerta y sale de la función sin hacer nada más
     }
+
+    // Convierte el texto de las observaciones a mayúsculas
+    observacionesField.value = observacionesField.value.toUpperCase();
 
     // Obtiene la fecha actual y formatea día, mes y año
     const date = new Date();
@@ -23,7 +42,7 @@ function guardarPDF() {
     const fileSafeTime = `${hours}-${minutes}`; // Hora formateada como hh-mm
 
     // Genera el nombre del archivo PDF con el formato 'Reporte_auditor_dd-mm-yyyy_hh-mm.pdf'
-    const fileName = `Reporte_${auditor}_${formattedDate}.pdf`;
+    const fileName = `Reporte_${auditorField.value}_${formattedDate}.pdf`;
 
     // Opciones para la generación de la imagen del contenedor HTML a capturar
     const options = {
