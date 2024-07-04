@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardar Página Completa en PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="script-pdf.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="content">
+        <div id="container">
+            <div class="fecha" id="dateTime"></div>
+            <center><img src="mpc.jpg" alt="centered image" height="51" width="80"></center>
+            <h2>REPORTE DE PRODUCTOS Y MATERIALES DE LIMPIEZA</h2>
+            <div class="datos">
+                <div class="form-group-1">
+                    <div>
+                        <label for="operario">Operario:</label>
+                        <input type="text" id="operario" name="operario">
+                    </div>
+                    <div>
+                        <label for="auditor">Auditor:</label>
+                        <input type="text" id="auditor" name="auditor">
+                    </div>
+                </div>
+                <div class="form-group-2">
+                    <div>
+                        <label for="cliente">Cliente:</label>
+                        <input type="text" id="cliente" name="cliente">
+                    </div>
+                    <div>
+                        <label for="direccion">Dirección:</label>
+                        <input type="text" id="direccion" name="direccion">
+                    </div>
+                </div>
+            </div>
+                <form id="checklistForm">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="xx">ÁREA Y ELEMENTOS A VERIFICAR</th>
+                                <th class="xxx">NA</th>
+                                <th class="xxx">C</th>
+                                <th class="xxx">CP</th>
+                                <th class="xxx">NC</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="columna-1" rowspan="1" colspan="5">Salón Comedor</td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Suelos apirados, fregados y sin manchas</td>
+                                <td class="columna-3"><input type="radio" name="q1" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q1" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q1" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q1" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Moviliario sin polvo y organizado</td>
+                                <td class="columna-3"><input type="radio" name="q2" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q2" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q2" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q2" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Mesas y superficies limpias y sin polvo</td>
+                                <td class="columna-3"><input type="radio" name="q3" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q3" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q3" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q3" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Ventanas y cortinas limpias y sin manchas</td>
+                                <td class="columna-3"><input type="radio" name="q4" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q4" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q4" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q4" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Equipos electrónicos (Televisión y mandos) limpios y funcionando</td>
+                                <td class="columna-3"><input type="radio" name="q5" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q5" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q5" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q5" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Cojines y mantas ordenados y limpios</td>
+                                <td class="columna-3"><input type="radio" name="q6" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q6" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q6" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q6" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-1" rowspan="1">Cocina</td>
+                                <td class="columna-3" colspan="4"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Encimeras limpias, sin residuos</td>
+                                <td class="columna-3"><input type="radio" name="q7" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q7" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q7" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q7" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Electrodomésticos (horno, microondas, nevera, lavadora) sin manchas y limpios por dentro y por fuera</td>
+                                <td class="columna-3"><input type="radio" name="q8" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q8" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q8" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q8" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Fregadero y grifos limpios, sin manchas y sin residuos</td>
+                                <td class="columna-3"><input type="radio" name="q9" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q9" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q9" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q9" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Suelos sin residuos y sin manchas</td>
+                                <td class="columna-3"><input type="radio" name="q10" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q10" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q10" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q10" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Papeleras Vacías, con bolsas y limpias</td>
+                                <td class="columna-3"><input type="radio" name="q11" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q11" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q11" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q11" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Utensilios y vajilla limpia y en su lugar</td>
+                                <td class="columna-3"><input type="radio" name="q12" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q12" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q12" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q12" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Despensa ordenada y sin productos caducados</td>
+                                <td class="columna-3"><input type="radio" name="q13" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q13" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q13" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q13" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Extractor de aire limpio y funcionando</td>
+                                <td class="columna-3"><input type="radio" name="q14" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q14" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q14" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q14" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-1" rowspan="1">Baños</td>
+                                <td class="columna-3" colspan="4"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Inodoros y bidés limpios y desinfectados</td>
+                                <td class="columna-3"><input type="radio" name="q15" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q15" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q15" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q15" value="NC"></td>
+                            </tr>                        
+                            <tr>
+                                <td class="columna-2">Lavabos y grifos sin manchas de agua y sin residuos de jabón</td>
+                                <td class="columna-3"><input type="radio" name="q16" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q16" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q16" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q16" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Espejos sin manchas</td>
+                                <td class="columna-3"><input type="radio" name="q17" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q17" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q17" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q17" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Pisos sin residuos, sin manchas</td>
+                                <td class="columna-3"><input type="radio" name="q18" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q18" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q18" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q18" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Papeleras vacías, limpias y con bolsa</td>
+                                <td class="columna-3"><input type="radio" name="q19" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q19" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q19" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q19" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Dispensadores de jabón y papel rellenos y funcionando</td>
+                                <td class="columna-3"><input type="radio" name="q20" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q20" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q20" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q20" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Toallas limpias y colocadas correctamente</td>
+                                <td class="columna-3"><input type="radio" name="q21" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q21" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q21" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q21" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Ducha / bañera limpia y sin moho</td>
+                                <td class="columna-3"><input type="radio" name="q22" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q22" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q22" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q22" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Desagües limpios y sin pelos</td>
+                                <td class="columna-3"><input type="radio" name="q23" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q23" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q23" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q23" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-1" rowspan="1">Dormitorios</td>
+                                <td class="columna-3" colspan="4"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Suelos aspirados, fregados y sin manchas</td>
+                                <td class="columna-3"><input type="radio" name="q24" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q24" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q24" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q24" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Camas hechas con ropa de cama limpia</td>
+                                <td class="columna-3"><input type="radio" name="q25" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q25" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q25" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q25" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Mobiliario sin polvo, sin manchas, organizado</td>
+                                <td class="columna-3"><input type="radio" name="q26" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q26" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q26" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q26" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Ventanas y cortinas limpias y sin manchas</td>
+                                <td class="columna-3"><input type="radio" name="q27" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q27" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q27" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q27" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Armarios y cajones vacíos y limpios </td>
+                                <td class="columna-3"><input type="radio" name="q28" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q28" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q28" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q28" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Mesitas de noche sin polvo ni manchas</td>
+                                <td class="columna-3"><input type="radio" name="q29" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q29" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q29" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q29" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Lámparas funcionando y sin polvo </td>
+                                <td class="columna-3"><input type="radio" name="q30" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q30" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q30" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q30" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Espejos sin manchas</td>
+                                <td class="columna-3"><input type="radio" name="q31" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q31" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q31" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q31" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-1" rowspan="1">Balcones y Terrazas</td>
+                                <td class="columna-3" colspan="4"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Suelos barridos y limpios</td>
+                                <td class="columna-3"><input type="radio" name="q32" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q32" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q32" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q32" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Moviliario de exterior sin polvo ni suciedad</td>
+                                <td class="columna-3"><input type="radio" name="q33" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q33" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q33" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q33" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Barandillas limpias y sin manchas</td>
+                                <td class="columna-3"><input type="radio" name="q34" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q34" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q34" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q34" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-1" rowspan="1">Elementos adicionales</td>
+                                <td class="columna-3" colspan="4"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Comprobación de que todos los servicios (agua, electricidad, calefacción / aire acondicionado) funcionan correctamente</td>
+                                <td class="columna-3"><input type="radio" name="q35" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q35" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q35" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q35" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Información turística y manuales de uso disponibles y en buen estado</td>
+                                <td class="columna-3"><input type="radio" name="q36" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q36" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q36" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q36" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Decoración (plantas, adornos, cuadros) en buen estado y sin polvo</td>
+                                <td class="columna-3"><input type="radio" name="q38" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q38" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q38" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q38" value="NC"></td>
+                            </tr>
+                            <tr>
+                                <td class="columna-2">Artículos de cortesía (Welcome Pack) disponibles</td>
+                                <td class="columna-3"><input type="radio" name="q38" value="NA"></td>
+                                <td class="columna-3"><input type="radio" name="q38" value="C"></td>
+                                <td class="columna-3"><input type="radio" name="q38" value="CP"></td>
+                                <td class="columna-3"><input type="radio" name="q38" value="NC"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="observaciones">
+                        <label>Comentarios / Observaciones:</label>
+                    </div>
+                    <div class="form-group-3">
+                        <div>
+                            <textarea id="observaciones" name="observaciones" rows="1"></textarea>
+                        </div>
+                    </div>
+                    <div class="cumplimiento"><label for="%C">% Cumplimiento = <span id="compliancePercentage"></span></label></div>
+                    <div class="indicador">
+                        <label>NA: No aplica &emsp; C: Cumple &emsp; CP: Cumple parcialmente &emsp; NC: No cumple</label>
+                    </div>
+                    <div class="fecha">
+                        <label></span><p id="fecha-pie"></p></label>
+                    </div>
+        
+                </form>
+        
+        <script src="script-fyh.js"></script>
+        <script src="calculo.js"></script>
+    </div>
+    <div class="button">
+        <button type="button" onclick="calculateCompliance()">Calcular % Cumplimiento</button>
+    </div>
+    <div class="button">
+        <button onclick="guardarPDF()">Guardar PDF</button>
+    </div>
+</body>
+</html>
+<div class="button">
+
+</div>
